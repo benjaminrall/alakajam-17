@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public int checkpointIndex = -1;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
+    public int Index { get; set; }
 
     public void TryUpdateCheckpoint()
     {
-        CheckpointManager.Instance.TryUpdateCheckpointIndex(checkpointIndex);
+        CheckpointManager.Instance.TryUpdateCheckpointIndex(Index);
     }
 }

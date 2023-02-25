@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1816793610507289197}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582986647931138739}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7449999, z: -0.000000059604645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -220,7 +220,19 @@ MonoBehaviour:
     m_ActionId: 5450aede-1f1f-40ee-87c2-a4f4eb8c461a
     m_ActionName: Default/RightPaddleDown[/Keyboard/rightShift,/DualShock4GamepadHID/rightTrigger]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1816793610507289186}
+        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
+        m_MethodName: RespawnPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 07935cd8-1554-4653-9d34-ca671f05a8f0
     m_ActionName: Default/Reset[/Keyboard/r]
   - m_PersistentCalls:
@@ -1209,10 +1221,10 @@ GameObject:
   - component: {fileID: 7869655240305352559}
   - component: {fileID: 8268204767816868043}
   - component: {fileID: 8062383790885843324}
-  - component: {fileID: 1816793609832730919}
+  - component: {fileID: 1816793611161997015}
   m_Layer: 0
   m_Name: Kayak
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1282,7 +1294,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1816793609832730919
+--- !u!64 &1816793611161997015
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

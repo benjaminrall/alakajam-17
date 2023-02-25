@@ -1,13 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 
-public class WaterController : Singleton<WaterController>
+namespace Water
 {
-    public MeshCollider Collider { get; private set; }
-
-    private void Awake()
+    public class WaterController : Singleton<WaterController>
     {
-        Collider = GetComponent<MeshCollider>();
+        public float waterSpeed = .2f;
+        public WaterCurrent[] waterCurrents;
+        public Rigidbody player;
+
+        public MeshCollider Collider { get; private set; }
+        
+        private void Awake()
+        {
+            Collider = GetComponent<MeshCollider>();
+        }
+
+        private void Update()
+        {
+            Vector3 force = waterCurrents.Where(current => current.Colliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
+            player.AddForce(waterSpeed * force, ForceMode.Acceleration);
+        }
     }
 }

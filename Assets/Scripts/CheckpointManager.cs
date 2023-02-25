@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CheckpointManager : Singleton<CheckpointManager>
 {
-    public Transform[] _checkpoints;
+    public Transform[] checkpoints;
 
-    public int _currentCheckpointIndex = 0;
-    public int _finishIndex;
+    private int _currentCheckpointIndex;
+    private int _finishIndex;
 
     public void Start()
     {
-        for (int i = 0; i < _checkpoints.Length; i++)
+        for (int i = 0; i < checkpoints.Length; i++)
         {
-            _checkpoints[i].GetComponent<Checkpoint>().checkpointIndex = i;
+            checkpoints[i].GetComponent<Checkpoint>().Index = i;
         }
-        _finishIndex = _checkpoints.Length - 1;
+        _finishIndex = checkpoints.Length - 1;
     }
 
     public void TryUpdateCheckpointIndex(int newIndex)
@@ -33,7 +33,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
 
     public void Respawn(Transform player)
     {
-        player.position = _checkpoints[_currentCheckpointIndex].position;
+        player.position = checkpoints[_currentCheckpointIndex].position;
         player.rotation = Quaternion.identity;
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

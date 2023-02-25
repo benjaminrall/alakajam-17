@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Water;
 
 namespace Player
 {
@@ -47,6 +48,11 @@ namespace Player
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.inertiaTensor = Vector3.one;
             _rigidbody.centerOfMass = Vector3.zero;
+            
+            foreach (MeshCollider c in transform.GetComponentsInChildren<MeshCollider>())
+            {
+                Physics.IgnoreCollision(c, WaterController.Instance.Collider);
+            }
         }
 
         private void Update()
@@ -126,14 +132,17 @@ namespace Player
             _inputs.RightPaddleDown = context.ReadValueAsButton();
         }
 
-        public void Reset(InputAction.CallbackContext context)
+        public void RespawnPlayer()
         {
-            CheckpointManager.Instance.Respawn(this.transform);
+            CheckpointManager.Instance.Respawn(transform);
         }
 
         public void OnTriggerEnter(Collider other)
         {
-            other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
+            if (other.CompareTag("Checkpoint"))
+            {
+                other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
+            }
         }
     }
 }

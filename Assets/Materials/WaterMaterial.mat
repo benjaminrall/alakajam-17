@@ -104,9 +104,10 @@ Material:
     - _SpecularHighlights: 1
     - _Speed: 1
     - _SrcBlend: 1
+    - _TimeOffset: 1
     - _UVSec: 0
     - _WaveAmmount: 0.01
-    - _WaveAmount: 0.005
+    - _WaveAmount: 0.2
     - _ZWrite: 1
     m_Colors:
     - _BaseColour: {r: 0, g: 0.40410185, b: 1, a: 0}
