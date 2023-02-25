@@ -17,7 +17,9 @@ namespace Player
         public Transform rightPaddle;
 
         public Vector2 paddleMovementSpeed;
-        public Vector3 speed;
+
+        public float forwardSpeed = 4.5f;
+        public float sidewaysSpeed = 2f;
 
         private Rigidbody _rigidbody;
 
@@ -44,7 +46,7 @@ namespace Player
         {
             _rigidbody = GetComponent<Rigidbody>();
 
-            Physics.IgnoreCollision(GetComponent<Collider>(), WaterController.Instance.Collider);
+            Physics.IgnoreCollision(GetComponent<CapsuleCollider>(), WaterController.Instance.Collider);
         }
 
         private void Update()
@@ -59,21 +61,29 @@ namespace Player
             
             UpdatePaddlePositions();
 
-            Vector3 adjustedSpeed = Quaternion.Euler(0, transform.localRotation.y, 0) * speed;
-            Debug.Log(adjustedSpeed);
-            
+            //Debug.Log(transform.localRotation.eulerAngles.y);
+            //Vector3 adjustedSpeed = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * speed;
+            //adjustedSpeed = new Vector3(Mathf.Abs(adjustedSpeed.x), 0, Mathf.Abs(adjustedSpeed.z));
+            //Debug.Log(Mathf.Abs(adjustedSpeed.x) + " " + Mathf.Abs(adjustedSpeed.z));
+            //Debug.Log(Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right);
+            //Debug.Log(transform.eulerAngles.y);
+
             if (_leftPaddleHeight > 0.8 && _inputs.LeftPaddleDown)
             {
                 Vector3 movement = _previousLeftPaddlePosition - leftPaddle.GetChild(0).position;
-                
-                _rigidbody.AddForceAtPosition(new Vector3(adjustedSpeed.x * paddleMovementSpeed.x * movement.x, 0, adjustedSpeed.y * paddleMovementSpeed.x * movement.z), leftPaddle.GetChild(0).position, ForceMode.Acceleration);
+                Vector3 rotatedMovement = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * movement;
+                Vector3 adjustedMovement = new(forwardSpeed * rotatedMovement.x, 0, sidewaysSpeed * rotatedMovement.z);
+                movement = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0) * adjustedMovement;
+                _rigidbody.AddForceAtPosition(movement, leftPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
             
             if (_rightPaddleHeight > 0.8 && _inputs.RightPaddleDown)
             {
                 Vector3 movement = _previousRightPaddlePosition - rightPaddle.GetChild(0).position;
-                
-                _rigidbody.AddForceAtPosition(new Vector3(adjustedSpeed.x * paddleMovementSpeed.x * movement.x, 0, adjustedSpeed.y * paddleMovementSpeed.x * movement.z), rightPaddle.GetChild(0).position, ForceMode.Acceleration);
+                Vector3 rotatedMovement = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * movement;
+                Vector3 adjustedMovement = new(forwardSpeed * rotatedMovement.x, 0, sidewaysSpeed * rotatedMovement.z);
+                movement = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0) * adjustedMovement;
+                _rigidbody.AddForceAtPosition(movement, rightPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
         }
 
