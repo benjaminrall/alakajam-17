@@ -13,12 +13,11 @@ namespace Player
             public bool RightPaddleDown;
         }
         
-        public AnimationCurve paddleAnimationCurve;
         public Transform leftPaddle;
         public Transform rightPaddle;
 
         public Vector2 paddleMovementSpeed;
-        public Vector2 speed;
+        public Vector3 speed;
 
         private Rigidbody _rigidbody;
 
@@ -58,17 +57,21 @@ namespace Player
             
             UpdatePaddlePositions();
 
-            if (_leftPaddleHeight > 0.8)
+            Vector3 adjustedSpeed = Quaternion.Euler(0, transform.localRotation.y, 0) * speed;
+            Debug.Log(adjustedSpeed);
+            
+            if (_leftPaddleHeight > 0.8 && _inputs.LeftPaddleDown)
             {
                 Vector3 movement = _previousLeftPaddlePosition - leftPaddle.GetChild(0).position;
                 
-                _rigidbody.AddForceAtPosition(new Vector3(speed.x * movement.x, 0, speed.y * movement.z), leftPaddle.GetChild(0).position, ForceMode.Acceleration);
+                _rigidbody.AddForceAtPosition(new Vector3(adjustedSpeed.x * paddleMovementSpeed.x * movement.x, 0, adjustedSpeed.y * paddleMovementSpeed.x * movement.z), leftPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
-            if (_rightPaddleHeight > 0.8)
+            
+            if (_rightPaddleHeight > 0.8 && _inputs.RightPaddleDown)
             {
                 Vector3 movement = _previousRightPaddlePosition - rightPaddle.GetChild(0).position;
                 
-                _rigidbody.AddForceAtPosition(new Vector3(speed.x * movement.x, 0, speed.y * movement.z), rightPaddle.GetChild(0).position, ForceMode.Acceleration);
+                _rigidbody.AddForceAtPosition(new Vector3(adjustedSpeed.x * paddleMovementSpeed.x * movement.x, 0, adjustedSpeed.y * paddleMovementSpeed.x * movement.z), rightPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
         }
 
