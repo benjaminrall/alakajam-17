@@ -61,11 +61,11 @@ public class PlayerController : MonoBehaviour
 
         float lx = _leftTarget - _prevFrameLeft;
         if (_leftDown)
-            _rb.AddForceAtPosition(transform.right * (lx < 0 ? -1 : lx == 0.0f ? 0 : 1) * Time.deltaTime * _paddleStrength, _leftEnd.position);
+            _rb.AddForceAtPosition((lx < 0 ? -1 : (lx == 0.0f ? 0 : 1)) * _paddleStrength * Time.deltaTime * transform.right, transform.position - transform.forward);
 
         float rx = _rightTarget - _prevFrameRight;
         if (_rightDown)
-            _rb.AddForceAtPosition(-transform.right * (rx < 0 ? -1 : rx == 0.0f ? 0 : 1) * Time.deltaTime * _paddleStrength, _rightEnd.position);
+            _rb.AddForceAtPosition((rx < 0 ? -1 : (rx == 0.0f ? 0 : 1)) * _paddleStrength * Time.deltaTime * -transform.right, transform.position + transform.forward);
 
         _prevFrameLeft = _leftTarget;
         _prevFrameRight = _rightTarget;

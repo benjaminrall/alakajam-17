@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour
 {
-    Rigidbody _rb;
-    float depthBeforeSubmerged = 1f;
-    float displacementAmount = 1f;
+    public Rigidbody _rb;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (transform.position.y < 0f)
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position + Vector3.up * 20, Vector3.down);
+        if (WaterController.GetCollider().Raycast(ray, out hit, Mathf.Infinity))
         {
-            float displacementMul = Mathf.Clamp01(-transform.position.y / depthBeforeSubmerged) * displacementAmount;
-            _rb.AddForce(new Vector3(0f, Mathf.Abs(Physics.gravity.y) * displacementMul, 0), ForceMode.Acceleration);
+            if (transform.position.y < hit.point.y)
+            {
+                float displacementMul = Mathf.Clamp01((hit.point.y - transform.position.y) / 1.0f);
+                _rb.AddForceAtPosition(hit.normal * -Physics.gravity.y * displacementMul, transform.position);
+            }
         }
     }
 }
