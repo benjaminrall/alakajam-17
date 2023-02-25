@@ -69,12 +69,12 @@ public class NewPlayerController : MonoBehaviour
     void UpdatePaddlePos()
     {
         Vector3 leftRot = _leftPaddle.localRotation.eulerAngles;
-        leftRot.y = 120 + (_leftPaddlePosition * 120);
+        leftRot.y = 120 + _leftPaddlePosition * 120;
         leftRot.x = _paddleAnimationCurve.Evaluate(1 - _leftPaddlePosition) * 25;
         _leftPaddle.localRotation = Quaternion.Euler(leftRot);
 
         Vector3 rightRot = _rightPaddle.localRotation.eulerAngles;
-        rightRot.y = 60 - (_rightPaddlePosition * 120);
+        rightRot.y = 60 - _rightPaddlePosition * 120;
         rightRot.x = _paddleAnimationCurve.Evaluate(1 - _rightPaddlePosition) * 25;
         _rightPaddle.localRotation = Quaternion.Euler(rightRot);
     }

@@ -1,93 +1,114 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+namespace Player
 {
-    private Rigidbody _rb;
-
-    public Vector2 _leftStick;
-    public Vector2 _rightStick;
-    public bool _leftDown;
-    public bool _rightDown;
-
-    public float _prevFrameLeft;
-    public float _prevFrameRight;
-
-    public float _minRotation;
-    public float _maxRotation;
-
-    public Transform _leftTransform;
-    public Transform _rightTransform;
-
-    public Transform _leftEnd;
-    public Transform _rightEnd;
-
-    public float _leftTarget;
-    public float _rightTarget;
-
-    public float _conformSpeed = 1.0f;
-    public float _paddleStrength = 5.0f;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerController : MonoBehaviour
     {
-        _rb = GetComponent<Rigidbody>();
-    }
+        private struct Inputs
+        {
+            public bool MoveLeftPaddle;
+            public bool MoveRightPaddle;
+            public bool LeftPaddleDown;
+            public bool RightPaddleDown;
+        }
+        
+        public AnimationCurve paddleAnimationCurve;
+        public Transform leftPaddle;
+        public Transform rightPaddle;
 
-    // Update is called once per frame
-    void Update()
-    {
-        CalculatePaddles();
-    }
+        public Vector2 paddleMovementSpeed;
+        public Vector2 speed;
 
-    private void CalculatePaddles()
-    {
-        _leftTarget = Mathf.Lerp(180 + _minRotation, 180 + _maxRotation, (_leftStick.y / 2) + 0.5f);
-        _rightTarget = Mathf.Lerp(_maxRotation, _minRotation, (_rightStick.y / 2) + 0.5f);
+        private Rigidbody _rigidbody;
 
-        Vector3 leftRot = _leftTransform.localRotation.eulerAngles;
-        Vector3 rightRot = _rightTransform.localRotation.eulerAngles;
+        private Inputs _inputs;
 
-        leftRot.y = _leftTarget;
-        rightRot.y = _rightTarget;
+        private bool _leftPaddleDown;
+        private bool _rightPaddleDown;
+        
+        private float _leftPaddlePosition;
+        private float _rightPaddlePosition;
+        private float _leftPaddleHeight;
+        private float _rightPaddleHeight;
 
-        leftRot.x = _leftDown ? 25 : 0;
-        rightRot.x = _rightDown ? 25 : 0;
+        private Vector3 _previousLeftPaddlePosition;
+        private Vector3 _previousRightPaddlePosition;
 
-        _leftTransform.localRotation = Quaternion.Lerp(_leftTransform.localRotation, Quaternion.Euler(leftRot), _conformSpeed * Time.deltaTime);
-        _rightTransform.localRotation = Quaternion.Lerp(_rightTransform.localRotation, Quaternion.Euler(rightRot), _conformSpeed * Time.deltaTime);
+        private float _leftTargetPosition;
+        private float _rightTargetPosition;
+        private float _leftTargetHeight;
+        private float _rightTargetHeight;
 
-        float lx = _leftTarget - _prevFrameLeft;
-        if (_leftDown)
-            _rb.AddForceAtPosition((lx < 0 ? -1 : (lx == 0.0f ? 0 : 1)) * _paddleStrength * Time.deltaTime * transform.right, transform.position - transform.forward);
 
-        float rx = _rightTarget - _prevFrameRight;
-        if (_rightDown)
-            _rb.AddForceAtPosition((rx < 0 ? -1 : (rx == 0.0f ? 0 : 1)) * _paddleStrength * Time.deltaTime * -transform.right, transform.position + transform.forward);
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
 
-        _prevFrameLeft = _leftTarget;
-        _prevFrameRight = _rightTarget;
-    }
+        private void Update()
+        {
+            _leftTargetPosition = _inputs.MoveLeftPaddle ? 1 : 0;
+            _rightTargetPosition = _inputs.MoveRightPaddle ? 1 : 0;
+            _leftTargetHeight = _inputs.LeftPaddleDown ? 1 : 0;
+            _rightTargetHeight = _inputs.RightPaddleDown ? 1 : 0;
+            
+            _previousLeftPaddlePosition = leftPaddle.GetChild(0).position;
+            _previousRightPaddlePosition = rightPaddle.GetChild(0).position;
+            
+            UpdatePaddlePositions();
 
-    public void InputLeftPaddle(InputAction.CallbackContext context)
-    {
-        _leftStick = context.ReadValue<Vector2>();
-    }
+            if (_leftPaddleHeight > 0.8)
+            {
+                Vector3 movement = _previousLeftPaddlePosition - leftPaddle.GetChild(0).position;
+                
+                _rigidbody.AddForceAtPosition(new Vector3(speed.x * movement.x, 0, speed.y * movement.z), leftPaddle.GetChild(0).position, ForceMode.Acceleration);
+            }
+            if (_rightPaddleHeight > 0.8)
+            {
+                Vector3 movement = _previousRightPaddlePosition - rightPaddle.GetChild(0).position;
+                
+                _rigidbody.AddForceAtPosition(new Vector3(speed.x * movement.x, 0, speed.y * movement.z), rightPaddle.GetChild(0).position, ForceMode.Acceleration);
+            }
+        }
 
-    public void InputLeftDown(InputAction.CallbackContext context)
-    {
-        _leftDown = context.ReadValueAsButton();
-    }
+        private void UpdatePaddlePositions()
+        {
+            Vector3 leftRot = leftPaddle.localRotation.eulerAngles;
+            _leftPaddlePosition = Mathf.Lerp(_leftPaddlePosition, _leftTargetPosition, paddleMovementSpeed.x * Time.deltaTime);
+            _leftPaddleHeight = Mathf.Lerp(_leftPaddleHeight, _leftTargetHeight, paddleMovementSpeed.y * Time.deltaTime);
+            
+            leftRot.x = _leftPaddleHeight * 40;
+            leftRot.y = 120 + (1 - _leftPaddlePosition) * 120;
+            leftPaddle.localRotation = Quaternion.Euler(leftRot);
+            
+            Vector3 rightRot = rightPaddle.localRotation.eulerAngles;
+            _rightPaddlePosition = Mathf.Lerp(_rightPaddlePosition, _rightTargetPosition, paddleMovementSpeed.x * Time.deltaTime);
+            _rightPaddleHeight = Mathf.Lerp(_rightPaddleHeight, _rightTargetHeight, paddleMovementSpeed.y * Time.deltaTime);
+            
+            rightRot.x = _rightPaddleHeight * 40;
+            rightRot.y = 60 - (1 - _rightPaddlePosition) * 120;
+            rightPaddle.localRotation = Quaternion.Euler(rightRot);
+        }
+        
+        public void MoveLeftPaddleInput(InputAction.CallbackContext context)
+        {
+            _inputs.MoveLeftPaddle = context.ReadValueAsButton();
+        }
+        
+        public void MoveRightPaddleInput(InputAction.CallbackContext context)
+        {
+            _inputs.MoveRightPaddle = context.ReadValueAsButton();
+        }
 
-    public void InputRightPaddle(InputAction.CallbackContext context)
-    {
-        _rightStick = context.ReadValue<Vector2>();
-    }
+        public void LeftPaddleDownInput(InputAction.CallbackContext context)
+        {
+            _inputs.LeftPaddleDown = context.ReadValueAsButton();
+        }
 
-    public void InputRightDown(InputAction.CallbackContext context)
-    {
-        _rightDown = context.ReadValueAsButton();
+        public void RightPaddleDownInput(InputAction.CallbackContext context)
+        {
+            _inputs.RightPaddleDown = context.ReadValueAsButton();
+        }
     }
 }

@@ -6,7 +6,7 @@
             "id": "082a386b-7432-455b-b781-a848872975dc",
             "actions": [
                 {
-                    "name": "LeftPaddleDown",
+                    "name": "MoveLeftPaddle",
                     "type": "Button",
                     "id": "f0c41ec4-9a24-4bb3-b888-4841c1f684cb",
                     "expectedControlType": "Button",
@@ -15,9 +15,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightPaddleDown",
+                    "name": "MoveRightPaddle",
                     "type": "Button",
                     "id": "5450aede-1f1f-40ee-87c2-a4f4eb8c461a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftPaddleDown",
+                    "type": "Button",
+                    "id": "ffb485ef-3b64-418a-9f11-f47e6834d43b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightPaddleDown",
+                    "type": "Button",
+                    "id": "b03103fb-52ec-44f9-a301-a5b75c112221",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -41,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftPaddleDown",
+                    "action": "MoveLeftPaddle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "LeftPaddleDown",
+                    "action": "MoveLeftPaddle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftPaddleDown",
+                    "action": "MoveLeftPaddle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -74,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightPaddleDown",
+                    "action": "MoveRightPaddle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -85,14 +103,36 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "RightPaddleDown",
+                    "action": "MoveRightPaddle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "99b84fcf-51df-4082-942f-92582f2904d0",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRightPaddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "270e3242-6c5d-4ac0-9e4a-0f4eec763542",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftPaddleDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5bb52d7-c31f-4938-85e1-58d8b60b2379",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

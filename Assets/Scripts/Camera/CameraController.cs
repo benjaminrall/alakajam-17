@@ -19,7 +19,6 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator Shake(float duration, float magnitude, float speed)
     {
-
         float elapsed = 0.0f;
         float delay = 1 / speed;
 
