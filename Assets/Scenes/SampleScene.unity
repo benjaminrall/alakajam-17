@@ -1331,6 +1331,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 428900663}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1338318830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2826242821124597583, guid: bb66755037f8beb4196ace85b0e7e3c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 428900663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1338318834
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338318830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7298023284509521872, guid: bb66755037f8beb4196ace85b0e7e3c2, type: 3}
 --- !u!4 &1374640873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2732704643654993388, guid: bb66755037f8beb4196ace85b0e7e3c2,
@@ -1722,23 +1742,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPaddle: {fileID: 1374640873}
   rightPaddle: {fileID: 1277969624}
-  paddleMovementSpeed: {x: 100, y: 10}
+  paddleMovementSpeed: {x: 10, y: 10}
   forwardSpeed: 50
   sidewaysSpeed: 10
---- !u!136 &1744702648
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1744702642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.27382836
-  m_Height: 3.9473362
-  m_Direction: 0
-  m_Center: {x: 0.01293993, y: 0.48602608, z: 0.022770762}
 --- !u!1 &1756441272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5138613763702397605, guid: fbc8e4dfb107ace478711a4af84b83f3,
