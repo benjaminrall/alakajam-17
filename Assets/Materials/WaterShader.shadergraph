@@ -1023,10 +1023,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -912.0,
-            "y": -333.0000305175781,
+            "x": -918.0,
+            "y": -294.0,
             "width": 124.0,
-            "height": 33.999969482421878
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1666,10 +1666,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -884.0,
-            "y": -577.0000610351563,
+            "x": -918.0,
+            "y": -467.0,
             "width": 124.0,
-            "height": 173.00003051757813
+            "height": 173.0
         }
     },
     "m_Slots": [
@@ -1851,7 +1851,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "79082ce4aa8f4552823fc49586896d80",
     "m_Id": 0,
-    "m_DisplayName": "WaveAmmount",
+    "m_DisplayName": "WaveAmount",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2239,8 +2239,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -720.0,
-            "y": -446.0000305175781,
+            "x": -724.0,
+            "y": -358.0,
             "width": 126.0,
             "height": 118.0
         }
@@ -3352,10 +3352,10 @@
     "m_Guid": {
         "m_GuidSerialized": "5fece1f3-bd8a-48fd-b205-0a1843ca286a"
     },
-    "m_Name": "WaveAmmount",
+    "m_Name": "WaveAmount",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "WaveAmmount",
-    "m_DefaultReferenceName": "_WaveAmmount",
+    "m_RefNameGeneratedByDisplayName": "WaveAmount",
+    "m_DefaultReferenceName": "_WaveAmount",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,

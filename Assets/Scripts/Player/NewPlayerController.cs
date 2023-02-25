@@ -36,7 +36,7 @@ public class NewPlayerController : MonoBehaviour
 
     void Update()
     {
-        _rb.AddForce(WaterCurrentController.instance.GetCurrentDirection(transform.position) * 0.25f, ForceMode.Acceleration);
+        _rb.AddForce(WaterCurrentController.Instance.GetCurrentDirection(transform.position) * 0.25f, ForceMode.Acceleration);
 
         _leftTarget = _leftDown ? 0 : 1;
         _rightTarget = _rightDown ? 0 : 1;

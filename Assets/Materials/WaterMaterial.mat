@@ -106,6 +106,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _WaveAmmount: 0.01
+    - _WaveAmount: 0.005
     - _ZWrite: 1
     m_Colors:
     - _BaseColour: {r: 0, g: 0.40410185, b: 1, a: 0}
