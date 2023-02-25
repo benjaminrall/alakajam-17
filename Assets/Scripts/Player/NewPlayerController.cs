@@ -32,6 +32,8 @@ public class NewPlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+
+        Physics.IgnoreCollision(GetComponent<Collider>(), WaterController.Instance.Collider);
     }
 
     void Update()
@@ -43,25 +45,6 @@ public class NewPlayerController : MonoBehaviour
 
         _leftPaddlePosition = Mathf.Lerp(_leftPaddlePosition, _leftTarget, _paddleSpeed * Time.deltaTime);
         _rightPaddlePosition = Mathf.Lerp(_rightPaddlePosition, _rightTarget, _paddleSpeed * Time.deltaTime);
-
-        /*
-        if (_leftDown && _lastPaddleLeft < (Time.time - _paddleDelay))
-        {
-            _rb.AddForceAtPosition(_paddleStrength * -transform.right, transform.position + transform.forward);
-            _rb.AddForceAtPosition(_paddleStrength * transform.right * -3, transform.position);
-
-            _lastPaddleLeft = Time.time;
-        }
-        if (_rightDown && _lastPaddleRight < (Time.time - _paddleDelay))
-        {
-            _rb.AddForceAtPosition(_paddleStrength * -transform.right, transform.position - transform.forward);
-            _rb.AddForceAtPosition(_paddleStrength * transform.right * -3, transform.position);
-
-            _lastPaddleRight = Time.time;
-        }
-        Debug.DrawRay(transform.position, transform.forward, Color.red);
-        Debug.DrawRay(transform.position, transform.right, Color.red);
-        */
 
         UpdatePaddlePos();
     }

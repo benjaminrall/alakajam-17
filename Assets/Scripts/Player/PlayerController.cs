@@ -44,6 +44,8 @@ namespace Player
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+
+            Physics.IgnoreCollision(GetComponent<Collider>(), WaterController.Instance.Collider);
         }
 
         private void Update()
