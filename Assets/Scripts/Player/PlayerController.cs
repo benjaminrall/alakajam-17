@@ -125,5 +125,15 @@ namespace Player
         {
             _inputs.RightPaddleDown = context.ReadValueAsButton();
         }
+
+        public void Reset(InputAction.CallbackContext context)
+        {
+            CheckpointManager.Instance.Respawn(this.transform);
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
+        }
     }
 }
