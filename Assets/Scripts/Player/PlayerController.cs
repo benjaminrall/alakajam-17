@@ -41,18 +41,6 @@ namespace Player
             _rightTargetHeight = _inputs.RightPaddleDown ? 1 : 0;
             
             base.Update();
-            
-            if (_leftPaddleHeight > 0.8 && _inputs.LeftPaddleDown)
-            {
-                Vector3 movement = CalculateAdjustedMovement(_previousLeftPaddlePosition - leftPaddle.GetChild(0).position);
-                _rigidbody.AddForceAtPosition(movement, leftPaddle.GetChild(0).position, ForceMode.Acceleration);
-            }
-            
-            if (_rightPaddleHeight > 0.8 && _inputs.RightPaddleDown)
-            {
-                Vector3 movement = CalculateAdjustedMovement(_previousRightPaddlePosition - rightPaddle.GetChild(0).position);
-                _rigidbody.AddForceAtPosition(movement, rightPaddle.GetChild(0).position, ForceMode.Acceleration);
-            }
         }
         
         public void MoveLeftPaddleInput(InputAction.CallbackContext context)

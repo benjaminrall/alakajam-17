@@ -599,8 +599,8 @@ MonoBehaviour:
   paddleMovementSpeed: {x: 10, y: 10}
   forwardSpeed: 50
   sidewaysSpeed: 10
-  maxHealth: 4
-  sightRayLength: 2
+  maxHealth: 10
+  sightRayLength: 3
   sightRayMask:
     serializedVersion: 2
     m_Bits: 8

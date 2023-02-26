@@ -62,6 +62,18 @@ namespace Player
             _previousRightPaddlePosition = rightPaddle.GetChild(0).position;
             
             UpdatePaddlePositions();
+            
+            if (_leftPaddleHeight > 0.8 && _leftTargetHeight > 0.95)
+            {
+                Vector3 movement = CalculateAdjustedMovement(_previousLeftPaddlePosition - leftPaddle.GetChild(0).position);
+                _rigidbody.AddForceAtPosition(movement, leftPaddle.GetChild(0).position, ForceMode.Acceleration);
+            }
+            
+            if (_rightPaddleHeight > 0.8 && _rightTargetHeight > 0.95)
+            {
+                Vector3 movement = CalculateAdjustedMovement(_previousRightPaddlePosition - rightPaddle.GetChild(0).position);
+                _rigidbody.AddForceAtPosition(movement, rightPaddle.GetChild(0).position, ForceMode.Acceleration);
+            }
         }
 
         private void UpdatePaddlePositions()
