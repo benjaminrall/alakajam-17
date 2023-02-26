@@ -58,11 +58,17 @@ namespace Player
         public void MoveLeftPaddleInput(InputAction.CallbackContext context)
         {
             _inputs.MoveLeftPaddle = context.ReadValueAsButton();
+
+            if (context.action.triggered)
+                PlaySFX();
         }
         
         public void MoveRightPaddleInput(InputAction.CallbackContext context)
         {
             _inputs.MoveRightPaddle = context.ReadValueAsButton();
+
+            if (context.action.triggered)
+                PlaySFX();
         }
 
         public void LeftPaddleDownInput(InputAction.CallbackContext context)
@@ -98,6 +104,15 @@ namespace Player
             {
                 UpdateHealthSlider();
             }
+        }
+
+        private void PlaySFX()
+        {
+            int random = UnityEngine.Random.Range(1, 6);
+
+            AudioManager.instance.Play("splash" + random);
+
+            Debug.Log("splash" + random);
         }
 
         private void UpdateHealthSlider()
