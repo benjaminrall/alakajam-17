@@ -18,71 +18,70 @@ namespace Player
         //private static readonly int[] SmallLeftMasks = {0b000101,0b001101,0b100101,0b101101};
         //private static readonly int[] RightMasks = {0b101000,0b101010,0b101100,0b101110,0b111000,0b111010,0b111100,0b111110};
         //private static readonly int[] SmallRightMasks = {0b001010,0b001110,0b011010,0b011110};
-
-        private static readonly int[] ForwardMasks = {0b0000, 0b1111, 0b1100, 0b0011};
+        private static readonly int[] ForwardMasks = {0, 3, 1, 2};
         //0000
         //1111
         //1100
         //0011
+        //0010
+        //0001
         
-        private static readonly int[] LeftMasks = {0b0101,0b0100,0b0111,0b1101};
+        private static readonly int[] LeftMasks = {5,4,7,13};
         //0101
         //0100
         //0111
         //1101
         
-        private static readonly int[] SmallLeftMasks = {0b0001,0b0110};
-        //0001
+        private static readonly int[] SmallLeftMasks = {6};
         //0110
         
-        private static readonly int[] RightMasks = {0b1010,0b1000,0b1011,0b1110};
+        private static readonly int[] RightMasks = {10,8,11,14};
         //1010
         //1000
         //1011
         //1110
         
-        private static readonly int[] SmallRightMasks = {0b0010,0b1001};
-        //0010
+        private static readonly int[] SmallRightMasks = {0b1001};
         //1001
 
         private static readonly (((float, float), (float, float)), float)[] ForwardActions =
         {
-            (((0, 1), (0, 1)), .3f),
-            (((1, 1), (1, 1)), .6f),
-            (((1, 0), (1, 0)), .3f),
-            (((0, 0), (0, 0)), .6f),
+            (((0, 1), (0, 1)), .2f),
+            (((.5f, 1), (.5f, 1)), .08f),
+            (((1, 0), (1, 0)), .2f),
+            (((0, 0), (0, 0)), 1f),
         };
         
         private static readonly (((float, float), (float, float)), float)[] LeftActions =
         {
-            (((0, 0), (0, 1)), .3f),
-            (((0, 0), (.5f, 1)), .2f),
-            (((0, 0), (.5f, 0)), .3f),
-            (((0, 0), (0, 0)), .6f),
+            (((0, 1), (0, 1)), .1f),
+            (((.35f, 1), (1, 1)), .2f),
+            (((.35f, 0), (1, 0)), .3f),
+            (((0, 0), (0, 0)), .8f),
         };
         
         private static readonly (((float, float), (float, float)), float)[] SmallLeftActions =
         {
-            (((0, 1), (0, 1)), .1f),
-            (((.1f, 1), (.5f, 1)), .05f),
-            (((.1f, 0), (.5f, 0)), .3f),
-            (((0, 0), (0, 0)), .6f),
+            (((0, 1), (0, 1)), .3f),
+            (((.03f, 1), (.2f, 1)), .08f),
+            (((.03f, 0), (.2f, 0)), .2f),
+            (((0, 0), (0, 0)), .4f),
         };
         
         private static readonly (((float, float), (float, float)), float)[] RightActions =
         {
-            (((0, 1), (0, 0)), .3f),
-            (((.5f, 1), (0, 0)), .2f),
-            (((.5f, 0), (0, 0)), .3f),
-            (((0, 0), (0, 0)), .6f),
+            (((0, 1), (0, 1)), .1f),
+            (((1, 1), (.35f, 1)), .2f),
+            (((1, 0), (.35f, 0)), .3f),
+            (((0, 0), (0, 0)), .8f),
         };
 
         private static readonly (((float, float), (float, float)), float)[] SmallRightActions =
         {
-            (((0, 1), (0, 1)), .1f),
-            (((.5f, 1), (.1f, 1)), .05f),
-            (((.5f, 0), (.1f, 0)), .3f),
-            (((0, 0), (0, 0)), .6f),
+            (((0, 1), (0, 1)), .3f),
+            (((.2f, 1), (.03f, 1)), .08f),
+            (((.2f, 0), (.03f, 0)), .2f),
+            (((0, 0), (0, 0)), .4f),
         };
         
         private enum State
@@ -114,25 +113,37 @@ namespace Player
 
         private IEnumerable<(Vector3, Vector3)> GetRays()
         {
-            Vector3 origin = transform.position + .5f * Vector3.up;
+            Vector3 origin = transform.position + Vector3.up;
             Vector3 forward = -transform.right;
+            forward = new Vector3(forward.x, 0, forward.z).normalized;
             Vector3 right = transform.forward;
-
-            Vector3 frontOrigin = origin + 1.85f * forward;
-
+            right = new Vector3(right.x, 0, right.z).normalized;
+            
             // Steep Diagonals
-            yield return (origin + forward, (0.5f * forward - right).normalized);
-            yield return (origin + forward, (0.5f * forward + right).normalized);
+            
 
             // Shallow Diagonals
-            yield return (frontOrigin, (forward - 0.5f * right).normalized);
-            yield return (frontOrigin, (forward + 0.5f * right).normalized);
-
-            // Sideways diagonals
-            //yield return (origin, -right);
-            //yield return (origin, right);
+            yield return (origin, (forward - 0.5f * right).normalized);
+            yield return (origin, (forward + 0.5f * right).normalized);
+            yield return (origin, (0.5f * forward - right).normalized);
+            yield return (origin, (0.5f * forward + right).normalized);
         }
 
+        private int GetBotInput()
+        {
+            int input = 0;
+            
+            IEnumerable<(Vector3, Vector3)> rays = GetRays();
+            foreach ((Vector3 origin, Vector3 direction) in rays)
+            {
+                input <<= 1;
+                bool hit = Physics.Raycast(origin, direction, sightRayLength, sightRayMask);
+                if (hit) input ++;
+            }
+
+            return input;
+        }
+        
         private new void Update()
         {
             if (_actionInProgress)
@@ -141,30 +152,25 @@ namespace Player
                 if (_currentActionDuration > _currentAction.t)
                 {
                     _actionInProgress = false;
+                    
                 }
             }
 
-            foreach ((Vector3 origin, Vector3 direction) in GetRays())
-            {
-                Debug.DrawRay(origin, sightRayLength * direction, Color.red);
-            }
+            //foreach ((Vector3 origin, Vector3 direction) in GetRays())
+            //{
+            //    Debug.DrawRay(origin, sightRayLength * direction, Color.red);
+            //}
 
             _leftTargetHeight = _leftTargetPosition = _rightTargetHeight = _rightTargetPosition = 0;
-            
+
             if (_actionQueue.Count == 0)
             {
                 switch (_state)
                 {
                     case State.Drifting:
-                        int input = 0b0;
-                        foreach ((Vector3 origin, Vector3 direction) in GetRays())
-                        {
-                            input <<= 1;
-                            if (Physics.Raycast(origin, direction, sightRayLength, sightRayMask))
-                                input += 1;
-                        }
+                        _actionQueue.Clear();
+                        int input = GetBotInput();
                         _state = DecideNextState(input);
-                        Debug.Log(_state);
                         break;
                     case State.Forward:
                         foreach ((((float, float), (float, float)), float) action in ForwardActions)
@@ -225,28 +231,24 @@ namespace Player
 
         private static State DecideNextState(int input)
         {
-            if (LeftMasks.Any(mask => (input ^ mask) == 0))
+            if (ForwardMasks.Any(mask => input == mask))
+                return State.Forward;
+            
+            if (LeftMasks.Any(mask => input == mask))
                 return State.Left;
             
-            if (RightMasks.Any(mask => (input ^ mask) == 0))
+            if (RightMasks.Any(mask => input == mask))
                 return State.Right;
             
-            if (SmallLeftMasks.Any(mask => (input ^ mask) == 0))
+            if (SmallLeftMasks.Any(mask => input == mask))
                 return State.SmallLeft;
             
-            if (SmallRightMasks.Any(mask => (input ^ mask) == 0))
+            if (SmallRightMasks.Any(mask => input == mask))
                 return State.SmallRight;
-
-            if (ForwardMasks.Any(mask => (input ^ mask) == 0))
-                return State.Forward;
 
             return State.Drifting;
         }
-
-        private new void Respawn()
-        {
-            _actionQueue.Clear();
-            base.Respawn();
-        }
+        
+        private new void OnCollisionEnter(Collision other) { }
     }
 }

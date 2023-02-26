@@ -28,7 +28,13 @@ namespace Water
                 Vector3 botForce = waterCurrents.Where(current => current.BotColliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
                 
                 player.AddForce(waterSpeed * playerForce, ForceMode.Acceleration);
+                
+                
                 bot.AddForce(waterSpeed * botForce, ForceMode.Acceleration);
+                Quaternion rotation = Quaternion.Slerp(bot.transform.localRotation, Quaternion.LookRotation(Quaternion.Euler(0, 90, 0) * botForce),
+                    Time.deltaTime);
+                
+                bot.transform.localRotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
             }
         }
     }

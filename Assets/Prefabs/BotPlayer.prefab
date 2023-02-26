@@ -600,7 +600,7 @@ MonoBehaviour:
   forwardSpeed: 50
   sidewaysSpeed: 10
   maxHealth: 10
-  sightRayLength: 3
+  sightRayLength: 4
   sightRayMask:
     serializedVersion: 2
     m_Bits: 8

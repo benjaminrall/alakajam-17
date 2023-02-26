@@ -39,7 +39,7 @@ namespace Gameplay
 
             playerRigidbody.rotation = player.rotation = checkpoints[i].rotation;
             playerRigidbody.position = player.position = checkpoints[i].position + checkpoints[i].forward *
-                (1.8f * (playerScript.GetType() == typeof(PlayerController) ? -1 : 1));
+                (1.8f * (playerScript.GetType() == typeof(PlayerController) ? 1 : -1));
 
             playerRigidbody.velocity = playerRigidbody.angularVelocity = Vector3.zero;
         }
