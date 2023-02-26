@@ -247,6 +247,22 @@ namespace Player
         {
             _actionQueue.Clear();
             base.Respawn();
+
+        }
+        private new void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+
+            if (CurrentCheckpointIndex == Gameplay.CheckpointManager.Instance._finishIndex)
+            {
+                FinishFlag._playerWon = false;
+            }
+
+            if (other.CompareTag("HealthPack"))
+            {
+                // TODO
+                //base.UpdateHealthSlider();
+            }
         }
     }
 }

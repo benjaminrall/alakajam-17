@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace Camera
 {
-    public class CameraController : MonoBehaviour
+    public class CameraController : Singleton<CameraController>
     {
-
         public Transform target;
 
         [Range(0.0f, 1.0f)]
@@ -14,9 +13,12 @@ namespace Camera
 
         private void FixedUpdate()
         {
-            Vector3 targetPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-            transform.position = smoothedPosition;
+            if (target != null)
+            {
+                Vector3 targetPosition = target.position + offset;
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+                transform.position = smoothedPosition;
+            }
         }
 
         public IEnumerator Shake(float duration, float magnitude, float speed)

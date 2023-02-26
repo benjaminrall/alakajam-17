@@ -8,7 +8,7 @@ namespace Gameplay
     {
         public Transform[] checkpoints;
 
-        private int _finishIndex;
+        public int _finishIndex;
 
         public void Start()
         {
