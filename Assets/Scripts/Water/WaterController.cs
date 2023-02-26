@@ -20,10 +20,11 @@ namespace Water
 
         private void Update()
         {
-            if (!applyWaterCurrents) return;
-            
-            Vector3 force = waterCurrents.Where(current => current.Colliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
-            player.AddForce(waterSpeed * force, ForceMode.Acceleration);
+            if (applyWaterCurrents)
+            {
+                Vector3 force = waterCurrents.Where(current => current.Colliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
+                player.AddForce(waterSpeed * force, ForceMode.Acceleration);
+            }
         }
     }
 }

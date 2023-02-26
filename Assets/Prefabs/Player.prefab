@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6605636652742119997}
   m_Layer: 0
   m_Name: Kayak
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 6605636654049613350}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,7 +482,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6605636654049613348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   paddleMovementSpeed: {x: 10, y: 10}
   forwardSpeed: 50
   sidewaysSpeed: 10
-  maxHealth: 1
+  maxHealth: 5
 --- !u!114 &6605636654049613350
 MonoBehaviour:
   m_ObjectHideFlags: 0

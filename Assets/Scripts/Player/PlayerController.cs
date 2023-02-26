@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Water;
 
 namespace Player
@@ -21,9 +23,16 @@ namespace Player
 
         public Vector2 paddleMovementSpeed;
 
-        public float forwardSpeed = 4.5f;
-        public float sidewaysSpeed = 2f;
-        public float maxHealth = 100f;
+        public float forwardSpeed = 50f;
+        public float sidewaysSpeed = 10f;
+        
+        public float maxHealth = 5f;
+        public Slider healthSlider;
+        public Gradient healthGradient;
+        public Image healthFill;
+        public Image healthBorder;
+        public float healthDisplayTime = 1;
+        public float healthFadeOutTime = 1;
         
         private Rigidbody _rigidbody;
 
@@ -58,7 +67,7 @@ namespace Player
                 Physics.IgnoreCollision(c, WaterController.Instance.Collider);
             }
 
-            Health = maxHealth;
+            ResetHealthSlider();
         }
 
         private void Update()
@@ -96,6 +105,11 @@ namespace Player
                 Vector3 adjustedMovement = new(forwardSpeed * rotatedMovement.x, 0, sidewaysSpeed * rotatedMovement.z);
                 movement = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0) * adjustedMovement;
                 _rigidbody.AddForceAtPosition(movement, rightPaddle.GetChild(0).position, ForceMode.Acceleration);
+            }
+
+            if (Vector3.Angle(Vector3.up, transform.up) > 95)
+            {
+                RespawnPlayer();
             }
         }
 
@@ -151,15 +165,54 @@ namespace Player
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision other)
         {
-            Health--;
+            Health -= _rigidbody.velocity.magnitude;
+            
             if (Health <= 0)
             {
-                Health = maxHealth;
+                ResetHealthSlider();
                 RespawnPlayer();
             }
-            Debug.Log(Health);
+            else
+            {
+                UpdateHealthSlider();
+            }
+        }
+
+        private void UpdateHealthSlider()
+        {
+            healthSlider.value = Health / maxHealth;
+            healthFill.color = healthGradient.Evaluate(Health / maxHealth);
+            SetAlpha(healthBorder, 1f);
+            SetAlpha(healthFill, 1f);
+            StartCoroutine(FadeOutHealth());
+        }
+
+        private void ResetHealthSlider()
+        {
+            Health = maxHealth;
+            healthSlider.value = 1;
+            healthFill.color = healthGradient.Evaluate(1);
+            SetAlpha(healthBorder, 0f);
+            SetAlpha(healthFill, 0f);
+        }
+
+        private static void SetAlpha(Image image, float alpha)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+        }
+    
+        private IEnumerator FadeOutHealth()
+        {
+            yield return new WaitForSeconds(healthDisplayTime);
+            
+            for (float i = healthFadeOutTime; i >= 0f; i -= Time.deltaTime)
+            {
+                SetAlpha(healthBorder, 255 * (i / healthFadeOutTime) / 255f);
+                SetAlpha(healthFill, 255 * (i / healthFadeOutTime) / 255f);
+                yield return null;
+            }
         }
     }
 }
