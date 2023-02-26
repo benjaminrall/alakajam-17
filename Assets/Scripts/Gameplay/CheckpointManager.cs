@@ -8,7 +8,7 @@ namespace Gameplay
     {
         public Transform[] checkpoints;
 
-        public int _currentCheckpointIndex { get; private set; }
+        public int CurrentCheckpointIndex { get; private set; }
         private int _finishIndex;
 
         public void Start()
@@ -22,12 +22,12 @@ namespace Gameplay
 
         public void TryUpdateCheckpointIndex(int newIndex)
         {
-            if (newIndex > _currentCheckpointIndex)
+            if (newIndex > CurrentCheckpointIndex)
             {
-                _currentCheckpointIndex = newIndex;
+                CurrentCheckpointIndex = newIndex;
             }
 
-            if (_currentCheckpointIndex == _finishIndex)
+            if (CurrentCheckpointIndex == _finishIndex)
             {
                 Debug.Log("Finished");
             }
@@ -37,8 +37,8 @@ namespace Gameplay
         {
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            player.rotation = checkpoints[_currentCheckpointIndex].rotation;
-            player.position = checkpoints[_currentCheckpointIndex].position;
+            player.rotation = checkpoints[CurrentCheckpointIndex].rotation;
+            player.position = checkpoints[CurrentCheckpointIndex].position;
         }
 
         public float GetCompletionPercentage(Vector3 position, int checkpointIndex)
@@ -48,19 +48,19 @@ namespace Gameplay
                 Vector3 pos2 = checkpoints[checkpointIndex + 1].position;
 
                 Vector3 dir = pos2 - pos;
-                Vector3 playeroffset = position - pos;
+                Vector3 playerOffset = position - pos;
                 dir.y = 0;
-                playeroffset.y = 0;
+                playerOffset.y = 0;
                 float magnitude = dir.magnitude;
-                float playermagnitude = playeroffset.magnitude;
+                float playerMagnitude = playerOffset.magnitude;
 
-                float checkpointCompletion = playermagnitude / magnitude;
+                float checkpointCompletion = playerMagnitude / magnitude;
 
-                return ((((float)checkpointIndex + 1.0f) / _finishIndex) - 
-                        ((float)checkpointIndex / _finishIndex)) * checkpointCompletion + 
-                        ((float)checkpointIndex / _finishIndex);
+                return ((checkpointIndex + 1f) / _finishIndex - 
+                        (float) checkpointIndex / _finishIndex) * checkpointCompletion + 
+                        (float) checkpointIndex / _finishIndex;
             } catch {
-                return 1.0f;
+                return 1f;
             }
         }
     }

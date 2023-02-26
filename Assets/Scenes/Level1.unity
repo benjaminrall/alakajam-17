@@ -288,11 +288,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2462295146562734765, guid: 69403fafa9714c24bb931233bc069bc7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.87
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69403fafa9714c24bb931233bc069bc7, type: 3}
 --- !u!1 &262664929
@@ -7029,9 +7024,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbcf18e418f4f641b1c4d73133d08eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenu: {fileID: 1798656568}
-  _playerSlider: {fileID: 1445633876}
-  _enemySlider: {fileID: 1331644279}
+  pauseMenu: {fileID: 1798656568}
+  playerSlider: {fileID: 1445633876}
+  enemySlider: {fileID: 1331644279}
 --- !u!4 &1514321241
 Transform:
   m_ObjectHideFlags: 0
