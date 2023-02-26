@@ -31,7 +31,7 @@ public enum SoundType
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource AS;
+    private AudioSource _as;
     
     public Sound[] sounds;
 
@@ -39,31 +39,32 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup musicMixer;
     public AudioMixerGroup soundMixer;
 
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     private void Awake()
 	{
-		if (instance != null)
+		if (Instance != null)
 		{
-			if (instance != this)
+			if (Instance != this)
 			{
-				Destroy(this.gameObject);
+				Destroy(gameObject);
 			}
 		}
 		else
 		{
-			instance = this;
+			Instance = this;
 			DontDestroyOnLoad(this);
             foreach(Sound s in sounds)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip;
-                if (s.soundType == SoundType.MASTER) 
-                    s.source.outputAudioMixerGroup  = masterMixer;
-                else if (s.soundType == SoundType.MUSIC)
-                    s.source.outputAudioMixerGroup  = musicMixer;
-                else if (s.soundType == SoundType.SOUND)
-                    s.source.outputAudioMixerGroup  = soundMixer;
+                s.source.outputAudioMixerGroup = s.soundType switch
+                {
+                    SoundType.MASTER => masterMixer,
+                    SoundType.MUSIC => musicMixer,
+                    SoundType.SOUND => soundMixer,
+                    _ => s.source.outputAudioMixerGroup
+                };
                 s.source.volume = s.volume;
                 s.source.pitch = s.pitch;
                 s.source.loop = s.loop;
@@ -71,23 +72,28 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-    public void Play (string name)
+    public bool Play (string soundName)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
         if (s == null) 
         {
-            Debug.LogError($"Sound {name} not found.");
-            return;
+            Debug.LogError($"Sound {soundName} not found.");
+            return false;
         }
+
+        if (s.source.isPlaying)
+            return false;
+            
         s.source.Play();
+        return true;
     }
 
-    public void PlayAt(string name, Vector3 location)
+    public void PlayAt(string soundName, Vector3 location)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
         if (s == null)
         {
-            Debug.LogError($"Sound {name} not found.");
+            Debug.LogError($"Sound {soundName} not found.");
             return;
         }
         AudioSource.PlayClipAtPoint(s.clip, location);

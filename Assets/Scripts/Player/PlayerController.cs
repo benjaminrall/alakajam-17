@@ -108,11 +108,12 @@ namespace Player
 
         private void PlaySFX()
         {
-            int random = UnityEngine.Random.Range(1, 6);
-
-            AudioManager.instance.Play("splash" + random);
-
-            Debug.Log("splash" + random);
+            int random;
+            do
+            {
+                random = UnityEngine.Random.Range(1, 6);
+                Debug.Log("splash" + random);
+            } while (!AudioManager.Instance.Play("splash" + random));
         }
 
         private void UpdateHealthSlider()
