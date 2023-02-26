@@ -600,6 +600,10 @@ MonoBehaviour:
   forwardSpeed: 50
   sidewaysSpeed: 10
   maxHealth: 4
+  sightRayLength: 2
+  sightRayMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1213945265720014209
 GameObject:
   m_ObjectHideFlags: 0
