@@ -82,13 +82,6 @@ namespace Player
             
             UpdatePaddlePositions();
 
-            //Debug.Log(transform.localRotation.eulerAngles.y);
-            //Vector3 adjustedSpeed = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * speed;
-            //adjustedSpeed = new Vector3(Mathf.Abs(adjustedSpeed.x), 0, Mathf.Abs(adjustedSpeed.z));
-            //Debug.Log(Mathf.Abs(adjustedSpeed.x) + " " + Mathf.Abs(adjustedSpeed.z));
-            //Debug.Log(Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.right);
-            //Debug.Log(transform.eulerAngles.y);
-
             if (_leftPaddleHeight > 0.8 && _inputs.LeftPaddleDown)
             {
                 Vector3 movement = _previousLeftPaddlePosition - leftPaddle.GetChild(0).position;
@@ -162,10 +155,12 @@ namespace Player
             if (other.CompareTag("Checkpoint"))
             {
                 other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
-            } else if (other.CompareTag("HealthPack"))
+            } 
+            else if (other.CompareTag("HealthPack"))
             {
                 Destroy(other.gameObject);
-                Debug.Log("Get Health Pack");
+                Health = maxHealth;
+                UpdateHealthSlider();
             }
         }
 

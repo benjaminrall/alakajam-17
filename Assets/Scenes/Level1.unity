@@ -1239,7 +1239,7 @@ RectTransform:
   m_GameObject: {fileID: 933547482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.06, y: 1.06, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1422968536}
@@ -6631,6 +6631,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -98.218, y: 34.009995, z: 0}
+--- !u!1001 &1054955225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8461843987912667620, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthPack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.941
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089762590829013854, guid: 64cb9a4fde466b143aeb216e60de05b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64cb9a4fde466b143aeb216e60de05b5, type: 3}
 --- !u!64 &1055546969
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7806,7 +7875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8276,96 +8345,6 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1422968537}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthDisplayTime
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthFadeOutTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.atime0
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.ctime1
-      value: 19661
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.ctime2
-      value: 45875
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.ctime3
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key0.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key0.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key0.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key1.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key1.g
-      value: 0.49803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key1.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key2.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key2.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key2.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key3.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.key3.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605636654049613351, guid: f9107192968023441ba1b394efa0c76e,
-        type: 3}
-      propertyPath: healthGradient.m_NumColorKeys
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6638682934580251114, guid: f9107192968023441ba1b394efa0c76e,
         type: 3}
       propertyPath: m_RootOrder
