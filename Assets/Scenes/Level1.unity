@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3029eb02ec016d429baec5467df614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 543450652129862331}
+  target: {fileID: 6638682935055536995}
   smoothSpeed: 0.125
   offset: {x: 0, y: 15, z: 0}
 --- !u!1 &370837385
@@ -805,6 +805,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6428407953573504480, guid: fbc8e4dfb107ace478711a4af84b83f3, type: 3}
+--- !u!1 &532002531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532002532}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &532002532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532002531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.85, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6638682935055536995}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &574428573
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8302,12 +8333,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &543450652129862331 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6638682934580251114, guid: f9107192968023441ba1b394efa0c76e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6605636652528118609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &543450652129862335 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 6605636654049613353, guid: f9107192968023441ba1b394efa0c76e,
@@ -8380,6 +8405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BotPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638682935055536996, guid: 31dd2c41e2735d849a0750f5bf83ac19,
+        type: 3}
+      propertyPath: sightRayLength
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31dd2c41e2735d849a0750f5bf83ac19, type: 3}
@@ -8478,3 +8508,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9107192968023441ba1b394efa0c76e, type: 3}
+--- !u!4 &6638682935055536995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 319138533165512510, guid: 31dd2c41e2735d849a0750f5bf83ac19,
+    type: 3}
+  m_PrefabInstance: {fileID: 6362627752186012765}
+  m_PrefabAsset: {fileID: 0}
