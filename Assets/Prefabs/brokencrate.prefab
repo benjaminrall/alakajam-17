@@ -130,11 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4395181756706409714}
-  depthBeforeSubmerged: 0.1
-  displacementAmount: 2
+  depthBeforeSubmerged: 0.2
+  displacementAmount: 4
   floaterCount: 1
   waterDrag: 1
-  waterAngularDrag: 1
+  waterAngularDrag: 2
   waterNoiseAdjustment: 0.25
 --- !u!1 &1676558818086540965
 GameObject:
@@ -266,11 +266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4395181755258734937}
-  depthBeforeSubmerged: 0.1
-  displacementAmount: 2
+  depthBeforeSubmerged: 0.2
+  displacementAmount: 4
   floaterCount: 1
   waterDrag: 1
-  waterAngularDrag: 1
+  waterAngularDrag: 2
   waterNoiseAdjustment: 0.25
 --- !u!1 &3476703409055403965
 GameObject:
@@ -452,11 +452,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4395181755332845230}
-  depthBeforeSubmerged: 0.1
-  displacementAmount: 2
+  depthBeforeSubmerged: 0.2
+  displacementAmount: 4
   floaterCount: 1
   waterDrag: 1
-  waterAngularDrag: 1
+  waterAngularDrag: 2
   waterNoiseAdjustment: 0.25
 --- !u!1 &7403167848569072399
 GameObject:
@@ -588,11 +588,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4395181756653066685}
-  depthBeforeSubmerged: 0.1
-  displacementAmount: 2
+  depthBeforeSubmerged: 0.2
+  displacementAmount: 4
   floaterCount: 1
   waterDrag: 1
-  waterAngularDrag: 1
+  waterAngularDrag: 2
   waterNoiseAdjustment: 0.25
 --- !u!1 &7449433864384642700
 GameObject:
@@ -724,9 +724,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4395181757024918142}
-  depthBeforeSubmerged: 0.1
-  displacementAmount: 2
+  depthBeforeSubmerged: 0.2
+  displacementAmount: 4
   floaterCount: 1
   waterDrag: 1
-  waterAngularDrag: 1
+  waterAngularDrag: 2
   waterNoiseAdjustment: 0.25

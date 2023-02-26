@@ -46,15 +46,11 @@ namespace Player
         public void MoveLeftPaddleInput(InputAction.CallbackContext context)
         {
             _inputs.MoveLeftPaddle = context.ReadValueAsButton();
-
-            
         }
         
         public void MoveRightPaddleInput(InputAction.CallbackContext context)
         {
             _inputs.MoveRightPaddle = context.ReadValueAsButton();
-
-            
         }
 
         public void LeftPaddleDownInput(InputAction.CallbackContext context)
@@ -110,12 +106,8 @@ namespace Player
 
         private void PlaySFX()
         {
-            int random;
-            do
-            {
-                random = UnityEngine.Random.Range(1, 6);
-                Debug.Log("splash" + random);
-            } while (!AudioManager.Instance.Play("splash" + random));
+            int random = UnityEngine.Random.Range(1, 6);
+            AudioManager.Instance.Play("splash" + random);
         }
 
         private void BonkSFX()

@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CrateScript : MonoBehaviour
+namespace Gameplay
 {
-    public GameObject brokenCrate;
-
-    private void Start()
+    public class CrateScript : MonoBehaviour
     {
-        Physics.IgnoreCollision(GetComponent<Collider>(), Water.WaterController.Instance.Collider);
-    }
+        public GameObject brokenCrate;
 
-    public void OnCollisionEnter(Collision collision)
-    {
-        GameObject.Instantiate(brokenCrate, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        private void Start()
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), Water.WaterController.Instance.Collider);
+        }
+
+        public void OnCollisionEnter(Collision collision)
+        {
+            Instantiate(brokenCrate, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }
