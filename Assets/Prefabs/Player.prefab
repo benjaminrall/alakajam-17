@@ -289,6 +289,7 @@ MonoBehaviour:
   paddleMovementSpeed: {x: 10, y: 10}
   forwardSpeed: 50
   sidewaysSpeed: 10
+  maxHealth: 1
 --- !u!114 &1816793610507289197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,8 +438,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793610453448935
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,8 +489,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793610514429924
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,8 +571,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793610891886279
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,8 +622,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793610918614331
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,8 +673,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793610942434516
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,8 +724,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &1816793611008223006
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,8 +806,8 @@ MonoBehaviour:
   displacementAmount: 1
   floaterCount: 7
   waterDrag: 1
-  waterAngularDrag: 1
-  waterNoiseAdjustment: 0.2
+  waterAngularDrag: 0.5
+  waterNoiseAdjustment: 0.15
 --- !u!1 &3377402424277878125
 GameObject:
   m_ObjectHideFlags: 0

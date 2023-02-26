@@ -1,3 +1,4 @@
+using System;
 using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,7 +23,8 @@ namespace Player
 
         public float forwardSpeed = 4.5f;
         public float sidewaysSpeed = 2f;
-
+        public float maxHealth = 100f;
+        
         private Rigidbody _rigidbody;
 
         private Inputs _inputs;
@@ -42,7 +44,8 @@ namespace Player
         private float _rightTargetPosition;
         private float _leftTargetHeight;
         private float _rightTargetHeight;
-
+        
+        public float Health { get; private set; }
 
         private void Start()
         {
@@ -54,12 +57,12 @@ namespace Player
             {
                 Physics.IgnoreCollision(c, WaterController.Instance.Collider);
             }
+
+            Health = maxHealth;
         }
 
         private void Update()
         {
-            
-            
             _leftTargetPosition = _inputs.MoveLeftPaddle ? 1 : 0;
             _rightTargetPosition = _inputs.MoveRightPaddle ? 1 : 0;
             _leftTargetHeight = _inputs.LeftPaddleDown ? 1 : 0;
@@ -140,12 +143,23 @@ namespace Player
             CheckpointManager.Instance.Respawn(transform);
         }
 
-        public void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Checkpoint"))
             {
                 other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
             }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Health--;
+            if (Health <= 0)
+            {
+                Health = maxHealth;
+                RespawnPlayer();
+            }
+            Debug.Log(Health);
         }
     }
 }
