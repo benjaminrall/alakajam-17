@@ -11,7 +11,7 @@ namespace Menu
     {
         public GameObject pauseMenu;
         
-        private bool _paused = false;
+        private bool _paused;
 
         private Transform _player;
 
@@ -43,7 +43,9 @@ namespace Menu
 
         public void ExitButton()
         {
+            _paused = false;
             Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
             SceneManager.LoadScene(0);
         }
     }
