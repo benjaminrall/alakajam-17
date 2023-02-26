@@ -41,7 +41,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    public float currentBrightness = 0.1f;
     private void Awake()
 	{
 		if (instance != null)
@@ -92,11 +91,5 @@ public class AudioManager : MonoBehaviour
             return;
         }
         AudioSource.PlayClipAtPoint(s.clip, location);
-    }
-
-    public void UpdateBrightness(float value)
-    {
-        GameObject.Find("Directional Light").GetComponent<Light>().intensity = value;
-        currentBrightness = value;
     }
 }
