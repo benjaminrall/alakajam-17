@@ -162,6 +162,10 @@ namespace Player
             if (other.CompareTag("Checkpoint"))
             {
                 other.GetComponent<Checkpoint>().TryUpdateCheckpoint();
+            } else if (other.CompareTag("HealthPack"))
+            {
+                Destroy(other.gameObject);
+                Debug.Log("Get Health Pack");
             }
         }
 

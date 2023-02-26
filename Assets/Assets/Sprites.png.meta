@@ -195,10 +195,10 @@ TextureImporter:
       name: Controls
       rect:
         serializedVersion: 2
-        x: 31
+        x: 19
         y: 112
-        width: 162
-        height: 113
+        width: 186
+        height: 125
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
