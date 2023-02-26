@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Water;
@@ -57,6 +58,8 @@ namespace Player
 
         private void Update()
         {
+            
+            
             _leftTargetPosition = _inputs.MoveLeftPaddle ? 1 : 0;
             _rightTargetPosition = _inputs.MoveRightPaddle ? 1 : 0;
             _leftTargetHeight = _inputs.LeftPaddleDown ? 1 : 0;

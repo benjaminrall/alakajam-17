@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a45f53bf93e5741b1186f415561fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1816793610507289190}
+  rigidBody: {fileID: 1816793610507289190}
   depthBeforeSubmerged: 0.5
   displacementAmount: 1
   floaterCount: 7

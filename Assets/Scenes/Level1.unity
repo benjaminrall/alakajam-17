@@ -149,7 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b2d309bb52da647a955c6872d0d13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterSpeed: 0.2
+  applyWaterCurrents: 1
+  waterSpeed: 0.15
   waterCurrents:
   - {fileID: 1007273732}
   - {fileID: 1007273731}

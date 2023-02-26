@@ -6,7 +6,8 @@ namespace Water
 {
     public class WaterController : Singleton<WaterController>
     {
-        public float waterSpeed = .2f;
+        public bool applyWaterCurrents = true;
+        public float waterSpeed = .15f;
         public WaterCurrent[] waterCurrents;
         public Rigidbody player;
 
@@ -19,6 +20,8 @@ namespace Water
 
         private void Update()
         {
+            if (!applyWaterCurrents) return;
+            
             Vector3 force = waterCurrents.Where(current => current.Colliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
             player.AddForce(waterSpeed * force, ForceMode.Acceleration);
         }

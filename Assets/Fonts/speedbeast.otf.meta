@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 87f600dff28bf5c47acd5571237f085c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SpeedBeast FREE
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d28c0014bd0a9e94faeb232015de6ab2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

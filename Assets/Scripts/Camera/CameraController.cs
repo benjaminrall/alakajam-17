@@ -1,41 +1,44 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace Camera
 {
-
-    public Transform target;
-
-    [Range(0.0f, 1.0f)]
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
-
-    private void FixedUpdate()
+    public class CameraController : MonoBehaviour
     {
-        Vector3 targetPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-    }
 
-    public IEnumerator Shake(float duration, float magnitude, float speed)
-    {
-        float elapsed = 0.0f;
-        float delay = 1 / speed;
+        public Transform target;
 
-        Vector3 targetPosition;
+        [Range(0.0f, 1.0f)]
+        public float smoothSpeed = 0.125f;
+        public Vector3 offset;
 
-        while (elapsed < duration)
+        private void FixedUpdate()
         {
-            targetPosition = target.position + offset;
+            Vector3 targetPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+        }
 
-            float x = Random.Range(-1, 1) * magnitude;
-            float y = Random.Range(-1, 1) * magnitude;
+        public IEnumerator Shake(float duration, float magnitude, float speed)
+        {
+            float elapsed = 0.0f;
+            float delay = 1 / speed;
 
-            transform.localPosition = new Vector3(targetPosition.x + x, targetPosition.y + y, transform.localPosition.z);
+            Vector3 targetPosition;
 
-            elapsed += delay;
+            while (elapsed < duration)
+            {
+                targetPosition = target.position + offset;
 
-            yield return new WaitForSeconds(delay);
+                float x = Random.Range(-1, 1) * magnitude;
+                float y = Random.Range(-1, 1) * magnitude;
+
+                transform.localPosition = new Vector3(targetPosition.x + x, targetPosition.y + y, transform.localPosition.z);
+
+                elapsed += delay;
+
+                yield return new WaitForSeconds(delay);
+            }
         }
     }
 }
