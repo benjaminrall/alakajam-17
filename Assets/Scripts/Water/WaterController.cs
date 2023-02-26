@@ -9,8 +9,10 @@ namespace Water
         public bool applyWaterCurrents = true;
         public float waterSpeed = .15f;
         public WaterCurrent[] waterCurrents;
+        
         public Rigidbody player;
-
+        public Rigidbody bot;
+        
         public MeshCollider Collider { get; private set; }
         
         private void Awake()
@@ -22,8 +24,11 @@ namespace Water
         {
             if (applyWaterCurrents)
             {
-                Vector3 force = waterCurrents.Where(current => current.Colliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
-                player.AddForce(waterSpeed * force, ForceMode.Acceleration);
+                Vector3 playerForce = waterCurrents.Where(current => current.PlayerColliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
+                Vector3 botForce = waterCurrents.Where(current => current.BotColliding).Aggregate(Vector3.zero, (current1, current) => current1 + current.Direction).normalized;
+                
+                player.AddForce(waterSpeed * playerForce, ForceMode.Acceleration);
+                bot.AddForce(waterSpeed * botForce, ForceMode.Acceleration);
             }
         }
     }

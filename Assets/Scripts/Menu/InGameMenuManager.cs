@@ -13,14 +13,16 @@ namespace Menu
         
         private bool _paused;
 
-        private Transform _player;
+        private PlayerController _player;
+        private BotController _bot;
 
         public Slider playerSlider;
         public Slider enemySlider;
 
         private void Start()
         {
-            _player = FindObjectOfType<PlayerController>().transform;
+            _player = FindObjectOfType<PlayerController>();
+            _bot = FindObjectOfType<BotController>();
         }
 
         private void Update()
@@ -28,9 +30,14 @@ namespace Menu
             pauseMenu.SetActive(_paused);
             Time.timeScale = _paused ? 0f : 1f;
 
-            playerSlider.value = CheckpointManager.Instance.GetCompletionPercentage(_player.position,
-                CheckpointManager.Instance.CurrentCheckpointIndex);
-            enemySlider.value = 0f;
+            playerSlider.value = CheckpointManager.Instance.GetCompletionPercentage(
+                _player.transform.position,
+                _player.CurrentCheckpointIndex
+                );
+            enemySlider.value = CheckpointManager.Instance.GetCompletionPercentage(
+                _bot.transform.position,
+                _bot.CurrentCheckpointIndex
+            );;
         }
 
         public void TogglePauseMenu(InputAction.CallbackContext context)

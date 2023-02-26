@@ -4,11 +4,16 @@ namespace Gameplay
 {
     public class Checkpoint : MonoBehaviour
     {
-        public int Index { get; set; }
+        private int _index;
 
-        public void TryUpdateCheckpoint()
+        public int TryUpdateCheckpoint(int current)
         {
-            CheckpointManager.Instance.TryUpdateCheckpointIndex(Index);
+            return CheckpointManager.Instance.TryUpdateCheckpointIndex(current, _index);
+        }
+
+        public void SetIndex(int i)
+        {
+            _index = i;
         }
     }
 }

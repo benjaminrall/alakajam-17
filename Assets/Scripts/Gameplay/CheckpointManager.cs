@@ -8,43 +8,42 @@ namespace Gameplay
     {
         public Transform[] checkpoints;
 
-        public int CurrentCheckpointIndex { get; private set; }
         private int _finishIndex;
 
         public void Start()
         {
             for (int i = 0; i < checkpoints.Length; i++)
             {
-                checkpoints[i].GetComponent<Checkpoint>().Index = i;
+                checkpoints[i].GetComponent<Checkpoint>().SetIndex(i);
             }
             _finishIndex = checkpoints.Length - 1;
         }
 
-        public void TryUpdateCheckpointIndex(int newIndex)
+        public int TryUpdateCheckpointIndex(int currentIndex, int newIndex)
         {
-            if (newIndex > CurrentCheckpointIndex)
-            {
-                CurrentCheckpointIndex = newIndex;
-            }
-
-            if (CurrentCheckpointIndex == _finishIndex)
+            if (newIndex <= currentIndex) return currentIndex;
+            
+            if (newIndex == _finishIndex)
             {
                 Debug.Log("Finished");
             }
+            
+            return newIndex;
         }
 
         public void Respawn(Transform player)
         {
             Rigidbody playerRigidbody = player.GetComponent<Rigidbody>();
+            Character playerScript = player.GetComponent<Character>();
+            int i = playerScript.CurrentCheckpointIndex;
             
-            player.rotation = checkpoints[CurrentCheckpointIndex].rotation;
-            player.position = checkpoints[CurrentCheckpointIndex].position;
+            
+            
+            playerRigidbody.rotation = player.rotation = checkpoints[i].rotation;
+            playerRigidbody.position = player.position = checkpoints[i].position + checkpoints[i].forward *
+                (1.8f * (playerScript.GetType() == typeof(PlayerController) ? -1 : 1));
 
-            playerRigidbody.rotation = checkpoints[CurrentCheckpointIndex].rotation;
-            playerRigidbody.position = checkpoints[CurrentCheckpointIndex].position;
-            
-            playerRigidbody.velocity = Vector3.zero;
-            playerRigidbody.angularVelocity = Vector3.zero;
+            playerRigidbody.velocity = playerRigidbody.angularVelocity = Vector3.zero;
         }
 
         public float GetCompletionPercentage(Vector3 position, int checkpointIndex)

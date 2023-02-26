@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - HealthPack
+  - Bot
   layers:
   - Default
   - TransparentFX
