@@ -53,7 +53,7 @@ namespace Player
             _rigidbody.inertiaTensor = Vector3.one;
             _rigidbody.centerOfMass = Vector3.zero;
             
-            foreach (MeshCollider c in transform.GetComponentsInChildren<MeshCollider>())
+            foreach (Collider c in transform.GetComponentsInChildren<Collider>())
             {
                 Physics.IgnoreCollision(c, WaterController.Instance.Collider);
             }

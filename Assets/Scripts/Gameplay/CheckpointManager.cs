@@ -35,10 +35,10 @@ namespace Gameplay
 
         public void Respawn(Transform player)
         {
-            player.position = checkpoints[_currentCheckpointIndex].position;
-            player.rotation = Quaternion.identity;
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            player.rotation = checkpoints[_currentCheckpointIndex].rotation;
+            player.position = checkpoints[_currentCheckpointIndex].position;
         }
     }
 }

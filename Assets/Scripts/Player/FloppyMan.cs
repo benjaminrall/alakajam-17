@@ -8,6 +8,9 @@ namespace Player
 
         public Transform _bodyBone;
 
+        public Transform _leftArm;
+        public Transform _rightArm;
+
         public Transform _leftPaddle;
         public Transform _rightPaddle;
 
@@ -26,9 +29,16 @@ namespace Player
 
             Vector3 lookPos = _bodyBone.position - _rb.velocity * 0.3f + Vector3.up;
 
-            Quaternion target = Quaternion.LookRotation(-_rb.velocity * 0.3f + Vector3.up) * Quaternion.Euler(0, -90, -90);
+            Vector3 target = (Quaternion.LookRotation(-_rb.velocity * 0.4f + Vector3.up) * Quaternion.Euler(0, -90, -90)).eulerAngles;
 
-            _bodyBone.rotation = Quaternion.Lerp(_bodyBone.rotation, target, Time.deltaTime);
+            target.x = 0;
+            target.y = 0;
+
+            _bodyBone.localRotation = Quaternion.Euler(target);
+            _bodyBone.localRotation = Quaternion.Lerp(_bodyBone.localRotation, Quaternion.identity, 5.0f * Time.deltaTime);
+
+            _leftArm.rotation = Quaternion.LookRotation(_leftPaddle.position - _leftArm.position, Vector3.up) * Quaternion.Euler(-100, -15, 200);
+            _rightArm.rotation = Quaternion.LookRotation(_rightPaddle.position - _rightArm.position, Vector3.up) * Quaternion.Euler(100, -175, -170);
         }
     }
 }
