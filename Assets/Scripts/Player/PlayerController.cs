@@ -122,7 +122,7 @@ namespace Player
         {
             int random = UnityEngine.Random.Range(1, 4);
 
-            AudioManager.instance.Play("bonk" + random);
+            AudioManager.Instance.Play("bonk" + random);
         }
 
         private void UpdateHealthSlider()
