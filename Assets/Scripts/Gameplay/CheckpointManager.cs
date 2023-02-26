@@ -35,10 +35,16 @@ namespace Gameplay
 
         public void Respawn(Transform player)
         {
-            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player.rotation = checkpoints[CurrentCheckpointIndex].rotation;
             player.position = checkpoints[CurrentCheckpointIndex].position;
+            
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        }
+
+        private IEnumerator ResetPlayer(Transform player)
+        {
+            yield return new WaitForSeconds(.2f);
         }
 
         public float GetCompletionPercentage(Vector3 position, int checkpointIndex)
