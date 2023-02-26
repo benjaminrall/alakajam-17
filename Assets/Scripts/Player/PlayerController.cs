@@ -47,26 +47,32 @@ namespace Player
         {
             _inputs.MoveLeftPaddle = context.ReadValueAsButton();
 
-            if (context.action.triggered)
-                PlaySFX();
+            
         }
         
         public void MoveRightPaddleInput(InputAction.CallbackContext context)
         {
             _inputs.MoveRightPaddle = context.ReadValueAsButton();
 
-            if (context.action.triggered)
-                PlaySFX();
+            
         }
 
         public void LeftPaddleDownInput(InputAction.CallbackContext context)
         {
-            _inputs.LeftPaddleDown = context.ReadValueAsButton();
+            if (_inputs.LeftPaddleDown != context.ReadValueAsButton())
+            {
+                _inputs.LeftPaddleDown = context.ReadValueAsButton();
+                PlaySFX();
+            }
         }
 
         public void RightPaddleDownInput(InputAction.CallbackContext context)
         {
-            _inputs.RightPaddleDown = context.ReadValueAsButton();
+            if (_inputs.RightPaddleDown != context.ReadValueAsButton())
+            {
+                _inputs.RightPaddleDown = context.ReadValueAsButton();
+                PlaySFX();
+            }
         }
         
 
@@ -89,6 +95,7 @@ namespace Player
 
         private new void OnCollisionEnter(Collision other)
         {
+            BonkSFX();
             base.OnCollisionEnter(other);
             
             if (_health <= 0)
@@ -99,8 +106,6 @@ namespace Player
             {
                 UpdateHealthSlider();
             }
-
-            BonkSFX();
         }
 
         private void PlaySFX()
