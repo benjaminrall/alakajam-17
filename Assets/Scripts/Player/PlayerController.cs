@@ -104,6 +104,8 @@ namespace Player
             {
                 UpdateHealthSlider();
             }
+
+            BonkSFX();
         }
 
         private void PlaySFX()
@@ -111,8 +113,13 @@ namespace Player
             int random = UnityEngine.Random.Range(1, 6);
 
             AudioManager.instance.Play("splash" + random);
+        }
 
-            Debug.Log("splash" + random);
+        private void BonkSFX()
+        {
+            int random = UnityEngine.Random.Range(1, 4);
+
+            AudioManager.instance.Play("bonk" + random);
         }
 
         private void UpdateHealthSlider()

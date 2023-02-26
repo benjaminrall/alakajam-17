@@ -1080,44 +1080,58 @@ MonoBehaviour:
   - name: splash1
     soundType: 2
     clip: {fileID: 8300000, guid: e1c99ff7dbba79e4db2fc949794cfc03, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.25
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: splash2
     soundType: 2
     clip: {fileID: 8300000, guid: a2b33c2e946b2de41bfd17542a017a9b, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.25
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: splash3
     soundType: 2
     clip: {fileID: 8300000, guid: 419672b64a3407f4cbb7b2d4ee8cfb5c, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.25
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: splash4
     soundType: 2
     clip: {fileID: 8300000, guid: a8a2372507c0c33439c625c6b43c3301, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.25
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
   - name: splash5
     soundType: 2
     clip: {fileID: 8300000, guid: 27a582e02c08f1e46b8b409cfe3375ba, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.25
+    pitch: 0.8
     loop: 0
     source: {fileID: 0}
-  - name: waterfall
+  - name: bonk1
     soundType: 2
-    clip: {fileID: 8300000, guid: 27a582e02c08f1e46b8b409cfe3375ba, type: 3}
-    volume: 0
-    pitch: 0
-    loop: 1
+    clip: {fileID: 8300000, guid: 67ca44b9dacf3b04087bf4ebe8faebb7, type: 3}
+    volume: 0.25
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: bonk2
+    soundType: 2
+    clip: {fileID: 8300000, guid: b55e84c74b2b40d40833b60250ad74aa, type: 3}
+    volume: 0.25
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - name: bonk3
+    soundType: 2
+    clip: {fileID: 8300000, guid: 0c5bd31a8bda21c4d84f50ae55657aea, type: 3}
+    volume: 0.25
+    pitch: 0.8
+    loop: 0
     source: {fileID: 0}
   masterMixer: {fileID: 24300002, guid: a64a523a799e0944ea696cf4325752cd, type: 2}
   musicMixer: {fileID: 4356609269378292120, guid: a64a523a799e0944ea696cf4325752cd,
