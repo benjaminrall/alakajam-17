@@ -250,5 +250,21 @@ namespace Player
         }
         
         private new void OnCollisionEnter(Collision other) { }
+
+        private new void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+
+            if (CurrentCheckpointIndex == Gameplay.CheckpointManager.Instance._finishIndex)
+            {
+                FinishFlag._playerWon = false;
+            }
+
+            if (other.CompareTag("HealthPack"))
+            {
+                // TODO
+                //base.UpdateHealthSlider();
+            }
+        }
     }
 }

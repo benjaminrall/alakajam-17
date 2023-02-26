@@ -74,6 +74,13 @@ namespace Player
         {
             base.OnTriggerEnter(other);
 
+            if (CurrentCheckpointIndex == CheckpointManager.Instance._finishIndex)
+            {
+                Camera.CameraController.Instance.target = null;
+
+                FinishFlag.Instance.Call();
+            }
+
             if (other.CompareTag("HealthPack"))
             {
                 UpdateHealthSlider();
