@@ -171,90 +171,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Z
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 241
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2d2117280f77bd4b9ab7efb8cb538d8
-      internalID: -1806639827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: X
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 241
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a41c5da0d8c4787458e8fd12bc9ea5d1
-      internalID: -1420937851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: C
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 241
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38d2dd758b5eff24892568f18e5312ff
-      internalID: 1400196071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: V
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 241
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bde9bae24ae98143906e7966fcc73ce
-      internalID: -1042683409
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Finish
       rect:
         serializedVersion: 2
@@ -263,7 +179,7 @@ TextureImporter:
         width: 10
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,6 +187,27 @@ TextureImporter:
       bones: []
       spriteID: c21620a0354d6454c9bf6c0f5dc7f246
       internalID: -1443161370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Controls
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 112
+        width: 162
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8c308ecdcb996c4cacbe053c44e159c
+      internalID: 2075042068
       vertices: []
       indices: 
       edges: []
@@ -288,8 +225,17 @@ TextureImporter:
     nameFileIdTable:
       BoatEnemy: 1420674288
       BoatPlayer: -1545078849
-      C: 1400196071
+      Controls: 2075042068
       Finish: -1443161370
+      Sprites_0: 2075014007
+      Sprites_1: 1420392540
+      Sprites_2: 1911942060
+      Sprites_3: 98001091
+      Sprites_4: -1746450023
+      Sprites_5: 320828224
+      Sprites_6: -1028138361
+      Sprites_7: -1941538697
+      Sprites_8: -1798742077
       V: -1042683409
       X: -1420937851
       Z: -1806639827
