@@ -36,9 +36,7 @@ namespace Gameplay
             Rigidbody playerRigidbody = player.GetComponent<Rigidbody>();
             Character playerScript = player.GetComponent<Character>();
             int i = playerScript.CurrentCheckpointIndex;
-            
-            
-            
+
             playerRigidbody.rotation = player.rotation = checkpoints[i].rotation;
             playerRigidbody.position = player.position = checkpoints[i].position + checkpoints[i].forward *
                 (1.8f * (playerScript.GetType() == typeof(PlayerController) ? -1 : 1));

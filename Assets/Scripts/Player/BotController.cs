@@ -4,6 +4,8 @@ namespace Player
 {
     public class BotController : Character
     {
+ 
+        
         private new void Start()
         {
             base.Start();

@@ -44,19 +44,13 @@ namespace Player
             
             if (_leftPaddleHeight > 0.8 && _inputs.LeftPaddleDown)
             {
-                Vector3 movement = _previousLeftPaddlePosition - leftPaddle.GetChild(0).position;
-                Vector3 rotatedMovement = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * movement;
-                Vector3 adjustedMovement = new(forwardSpeed * rotatedMovement.x, 0, sidewaysSpeed * rotatedMovement.z);
-                movement = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0) * adjustedMovement;
+                Vector3 movement = CalculateAdjustedMovement(_previousLeftPaddlePosition - leftPaddle.GetChild(0).position);
                 _rigidbody.AddForceAtPosition(movement, leftPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
             
             if (_rightPaddleHeight > 0.8 && _inputs.RightPaddleDown)
             {
-                Vector3 movement = _previousRightPaddlePosition - rightPaddle.GetChild(0).position;
-                Vector3 rotatedMovement = Quaternion.Euler(0, -transform.localRotation.eulerAngles.y, 0) * movement;
-                Vector3 adjustedMovement = new(forwardSpeed * rotatedMovement.x, 0, sidewaysSpeed * rotatedMovement.z);
-                movement = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0) * adjustedMovement;
+                Vector3 movement = CalculateAdjustedMovement(_previousRightPaddlePosition - rightPaddle.GetChild(0).position);
                 _rigidbody.AddForceAtPosition(movement, rightPaddle.GetChild(0).position, ForceMode.Acceleration);
             }
         }
