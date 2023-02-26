@@ -8,7 +8,7 @@ namespace Gameplay
     {
         public Transform[] checkpoints;
 
-        private int _currentCheckpointIndex;
+        public int _currentCheckpointIndex { get; private set; }
         private int _finishIndex;
 
         public void Start()
@@ -39,6 +39,29 @@ namespace Gameplay
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player.rotation = checkpoints[_currentCheckpointIndex].rotation;
             player.position = checkpoints[_currentCheckpointIndex].position;
+        }
+
+        public float GetCompletionPercentage(Vector3 position, int checkpointIndex)
+        {
+            Vector3 pos = checkpoints[checkpointIndex].position;
+            try {
+                Vector3 pos2 = checkpoints[checkpointIndex + 1].position;
+
+                Vector3 dir = pos2 - pos;
+                Vector3 playeroffset = position - pos;
+                dir.y = 0;
+                playeroffset.y = 0;
+                float magnitude = dir.magnitude;
+                float playermagnitude = playeroffset.magnitude;
+
+                float checkpointCompletion = playermagnitude / magnitude;
+
+                return ((((float)checkpointIndex + 1.0f) / _finishIndex) - 
+                        ((float)checkpointIndex / _finishIndex)) * checkpointCompletion + 
+                        ((float)checkpointIndex / _finishIndex);
+            } catch {
+                return 1.0f;
+            }
         }
     }
 }
